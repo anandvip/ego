@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Game of Ego: A Journey Through Vedantic Wisdom</title>
+    <style>
+        /* CSS Variables for Theme Management */
+        :root {
+            --bg-gradient-start: #f5f7fa;
+            --bg-gradient-end: #c3cfe2;
+            --container-bg: #ffffff;
+            --text-color: #2c3e50;
+            --heading-color: #c1502e;
+            --accent-color: #e8a87c;
+            --border-color: #e0e0e0;
+            --shadow: rgba(0,0,0,0.1);
+            --intro-bg: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            --concept-bg: #f8f9fa;
+            --visual-bg: #e8f5e9;
+            --visual-border: #4caf50;
+            --insight-bg: #fff3e0;
+            --insight-border: #ff9800;
+            --definition-bg: #e3f2fd;
+            --definition-border: #2196f3;
+            --reflection-bg: #f3e5f5;
+            --reflection-border: #9c27b0;
+            --quote-bg: #fafafa;
+            --warning-bg: #ffebee;
+            --warning-border: #f44336;
+            --highlight-color: rgba(255, 235, 59, 0.4);
+            --highlight-border: #fbc02d;
+        }
+
+        [data-theme="dark"] {
+            --bg-gradient-start: #1a1a2e;
+            --bg-gradient-end: #16213e;
+            --container-bg: #0f3460;
+            --text-color: #e8e8e8;
+            --heading-color: #ff6b6b;
+            --accent-color: #ffa07a;
+            --border-color: #2d3748;
+            --shadow: rgba(0,0,0,0.3);
+            --intro-bg: linear-gradient(135deg, #4a4a4a 0%, #2d3748 100%);
+            --concept-bg: #1e2a3a;
+            --visual-bg: #1e3a2a;
+            --visual-border: #66bb6a;
+            --insight-bg: #3a2e1e;
+            --insight-border: #ffb74d;
+            --definition-bg: #1e2a3a;
+            --definition-border: #42a5f5;
+            --reflection-bg: #2e1e3a;
+            --reflection-border: #ba68c8;
+            --quote-bg: #2d3748;
+            --warning-bg: #3a1e1e;
+            --warning-border: #ef5350;
+            --highlight-color: rgba(255, 235, 59, 0.3);
+            --highlight-border: #f9a825;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            padding: 20px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Control Panel Styles */
+        .control-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--container-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--shadow);
+            z-index: 1000;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .toggle-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--accent-color);
+            background: var(--container-bg);
+            color: var(--text-color);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-btn:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .toggle-btn.active {
+            background: var(--heading-color);
+            color: white;
+            border-color: var(--heading-color);
+        }
+
+        /* Highlights Panel */
+        .highlights-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--container-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--shadow);
+            z-index: 1000;
+            max-width: 300px;
+        }
+
+        .highlights-panel button {
+            width: 100%;
+            padding: 10px;
+            background: var(--heading-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .highlights-panel button:hover {
+            opacity: 0.9;
+        }
+
+        .highlight-count {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-color);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 80px;
+            background: var(--container-bg);
+            padding: 50px;
+            box-shadow: 0 10px 40px var(--shadow);
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--accent-color);
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: var(--heading-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: var(--text-color);
+            font-style: italic;
+            opacity: 0.8;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            color: var(--heading-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 5px solid var(--accent-color);
+        }
+        
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        h4 {
+            font-size: 1.2em;
+            color: var(--heading-color);
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .intro-box {
+            background: var(--intro-bg);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 5px solid var(--heading-color);
+        }
+        
+        .concept-card {
+            background: var(--concept-bg);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            position: relative;
+        }
+        
+        .concept-card::before {
+            content: '●';
+            position: absolute;
+            left: -14px;
+            top: 25px;
+            font-size: 24px;
+            color: var(--accent-color);
+            background: var(--container-bg);
+        }
+        
+        .ego-type {
+            background: var(--container-bg);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            border-top: 4px solid;
+        }
+        
+        .tamasic {
+            border-top-color: #6c5ce7;
+        }
+        
+        .rajasic {
+            border-top-color: #fd79a8;
+        }
+        
+        .sattvic {
+            border-top-color: #fdcb6e;
+        }
+        
+        .visual-description {
+            background: var(--visual-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-style: italic;
+            border-left: 4px solid var(--visual-border);
+        }
+        
+        .key-insight {
+            background: var(--insight-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid var(--insight-border);
+            font-weight: 500;
+        }
+        
+        .definition {
+            background: var(--definition-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid var(--definition-border);
+        }
+        
+        .reflection-prompt {
+            background: var(--reflection-bg);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border: 2px dashed var(--reflection-border);
+        }
+        
+        .quote {
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 4px solid var(--heading-color);
+            background: var(--quote-bg);
+            opacity: 0.9;
+        }
+        
+        .journey-path {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+            padding: 20px;
+            background: linear-gradient(to right, #6c5ce7, #fd79a8, #fdcb6e);
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+        
+        .journey-step {
+            flex: 1;
+            padding: 15px;
+            min-width: 100px;
+        }
+        
+        .journey-step h4 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: white;
+        }
+        
+        .warning-box {
+            background: var(--warning-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid var(--warning-border);
+        }
+
+        /* Interactive Ego Cards */
+        .ego-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .ego-card {
+            position: relative;
+            padding: 30px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px var(--shadow);
+            text-align: center;
+        }
+
+        .ego-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .ego-card.tamasic-card {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+        }
+
+        .ego-card.rajasic-card {
+            background: linear-gradient(135deg, #fd79a8, #fab1a0);
+        }
+
+        .ego-card.sattvic-card {
+            background: linear-gradient(135deg, #fdcb6e, #ffeaa7);
+        }
+
+        .ego-card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .ego-card-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .ego-card-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9em;
+        }
+
+        /* Tooltip Styles */
+        .tooltip {
+            position: absolute;
+            background: var(--container-bg);
+            color: var(--text-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--shadow);
+            z-index: 999;
+            max-width: 300px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            border: 2px solid var(--accent-color);
+        }
+
+        .tooltip.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .tooltip h4 {
+            margin-bottom: 10px;
+            color: var(--heading-color);
+        }
+
+        .tooltip p {
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Text Highlighting Styles */
+        .user-highlight {
+            background-color: var(--highlight-color);
+            border-bottom: 2px solid var(--highlight-border);
+            cursor: pointer;
+            position: relative;
+            padding: 2px 0;
+        }
+
+        .highlight-note-indicator {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: var(--insight-border);
+            color: white;
+            border-radius: 50%;
+            font-size: 10px;
+            text-align: center;
+            line-height: 16px;
+            margin-left: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--container-bg);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 40px var(--shadow);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: var(--heading-color);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .highlight-preview {
+            background: var(--highlight-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--highlight-border);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+            background: var(--container-bg);
+            color: var(--text-color);
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--heading-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--warning-border);
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Highlights List */
+        .highlights-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .highlight-item {
+            background: var(--concept-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--highlight-border);
+        }
+
+        .highlight-text {
+            font-style: italic;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .highlight-note {
+            background: var(--insight-bg);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .highlight-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .highlight-actions button {
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: none;
+        }
+
+        [data-lang="hi"] .lang-en {
+            display: none;
+        }
+
+        [data-lang="hi"] .lang-hi {
+            display: block;
+        }
+
+        [data-lang="en"] .lang-hi {
+            display: none;
+        }
+
+        [data-lang="en"] .lang-en {
+            display: block;
+        }
+        
+        footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid var(--border-color);
+            text-align: center;
+            color: var(--text-color);
+            font-size: 0.65em;
+            line-height: 1.6;
+            opacity: 0.7;
+        }
+        
+        footer .timestamp {
+            margin-top: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 25px;
+                margin-top: 100px;
+            }
+
+            .control-panel {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .toggle-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .highlights-panel {
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .ego-cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-path {
+                flex-direction: column;
+            }
+
+            .journey-step h4 {
+                font-size: 1.1em;
+            }
+
+            .modal-content {
+                padding: 20px;
+            }
+
+            .tooltip {
+                max-width: 250px;
+                font-size: 0.85em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .ego-card {
+                padding: 20px;
+            }
+
+            .ego-card-icon {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light" data-lang="en">
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <button class="toggle-btn" id="themeToggle">
+            <span>🌙</span>
+            <span class="lang-en">Dark Mode</span>
+            <span class="lang-hi">डार्क मोड</span>
+        </button>
+        <button class="toggle-btn" id="langToggle">
+            <span>🌐</span>
+            <span class="lang-en">हिंदी</span>
+            <span class="lang-hi">English</span>
+        </button>
+        <button class="toggle-btn" id="highlightToggle">
+            <span>✏️</span>
+            <span class="lang-en">Highlight Mode</span>
+            <span class="lang-hi">हाइलाइट मोड</span>
+        </button>
+    </div>
+
+    <!-- Highlights Panel -->
+    <div class="highlights-panel">
+        <button id="viewHighlights">
+            <span class="lang-en">📝 View My Highlights</span>
+            <span class="lang-hi">📝 मेरे हाइलाइट देखें</span>
+        </button>
+        <div class="highlight-count">
+            <span class="lang-en">Highlights: <span id="highlightCount">0</span></span>
+            <span class="lang-hi">हाइलाइट: <span id="highlightCountHi">0</span></span>
+        </div>
+    </div>
+
+    <!-- Note Modal -->
+    <div class="modal" id="noteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="lang-en">Add Note to Highlight</h3>
+                <h3 class="lang-hi">हाइलाइट में नोट जोड़ें</h3>
+                <button class="close-btn" id="closeNoteModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="highlight-preview" id="highlightPreview"></div>
+                <textarea id="noteText" placeholder="Add your personal insights here..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelNote">
+                    <span class="lang-en">Cancel</span>
+                    <span class="lang-hi">रद्द करें</span>
+                </button>
+                <button class="btn btn-primary" id="saveNote">
+                    <span class="lang-en">Save Note</span>
+                    <span class="lang-hi">नोट सेव करें</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Highlights List Modal -->
+    <div class="modal" id="highlightsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="lang-en">My Highlights & Notes</h3>
+                <h3 class="lang-hi">मेरे हाइलाइट और नोट्स</h3>
+                <button class="close-btn" id="closeHighlightsModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="highlights-list" id="highlightsList"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" id="clearAllHighlights">
+                    <span class="lang-en">Clear All</span>
+                    <span class="lang-hi">सभी हटाएं</span>
+                </button>
+                <button class="btn btn-secondary" id="closeHighlightsList">
+                    <span class="lang-en">Close</span>
+                    <span class="lang-hi">बंद करें</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="mainContent">
+        <header>
+            <h1>
+                <span class="lang-en">The Game of Ego</span>
+                <span class="lang-hi">अहंकार का खेल</span>
+            </h1>
+            <p class="subtitle">
+                <span class="lang-en">Understanding Ahankara Through Vedantic Wisdom</span>
+                <span class="lang-hi">वेदांतिक ज्ञान के माध्यम से अहंकार को समझना</span>
+            </p>
+        </header>
+
+        <div class="intro-box">
+            <p class="lang-en">Imagine waking up one day to realize that you have never truly been in control of your life. Every decision you make, what you chase, what you avoid, even what you love is being silently dictated by a game happening inside you. This is not a game you consciously chose to play, yet it determines how you react to praise and criticism, how you experience success and failure, and ultimately how you live your entire life. This invisible player is your ego, and most people die without ever realizing who was actually playing the game in their life.</p>
+            <p class="lang-hi">कल्पना करें कि एक दिन आप जागते हैं और महसूस करते हैं कि आप वास्तव में कभी भी अपने जीवन के नियंत्रण में नहीं थे। आप जो भी निर्णय लेते हैं, जो कुछ भी पीछा करते हैं, जिससे बचते हैं, यहां तक कि जो प्यार करते हैं, वह सब आपके भीतर चल रहे एक खेल द्वारा चुपचाप निर्देशित किया जा रहा है। यह वह खेल नहीं है जिसे आपने सचेत रूप से खेलने का चयन किया, फिर भी यह निर्धारित करता है कि आप प्रशंसा और आलोचना पर कैसे प्रतिक्रिया करते हैं, सफलता और विफलता का अनुभव कैसे करते हैं, और अंततः अपना पूरा जीवन कैसे जीते हैं। यह अदृश्य खिलाड़ी आपका अहंकार है, और अधिकांश लोग यह जाने बिना मर जाते हैं कि वास्तव में उनके जीवन में कौन खेल रहा था।</p>
+        </div>
+
+        <h2>
+            <span class="lang-en">Interactive Ego Types: Tap to Explore</span>
+            <span class="lang-hi">इंटरएक्टिव अहंकार के प्रकार: जानने के लिए टैप करें</span>
+        </h2>
+
+        <div class="ego-cards-container">
+            <div class="ego-card tamasic-card" data-ego="tamasic">
+                <div class="ego-card-icon">🌑</div>
+                <div class="ego-card-title">
+                    <span class="lang-en">Tamasic</span>
+                    <span class="lang-hi">तामसिक</span>
+                </div>
+                <div class="ego-card-subtitle">
+                    <span class="lang-en">Dullness & Darkness</span>
+                    <span class="lang-hi">सुस्ती और अंधकार</span>
+                </div>
+            </div>
+
+            <div class="ego-card rajasic-card" data-ego="rajasic">
+                <div class="ego-card-icon">⚡</div>
+                <div class="ego-card-title">
+                    <span class="lang-en">Rajasic</span>
+                    <span class="lang-hi">राजसिक</span>
+                </div>
+                <div class="ego-card-subtitle">
+                    <span class="lang-en">Action & Ambition</span>
+                    <span class="lang-hi">कर्म और महत्वाकांक्षा</span>
+                </div>
+            </div>
+
+            <div class="ego-card sattvic-card" data-ego="sattvic">
+                <div class="ego-card-icon">✨</div>
+                <div class="ego-card-title">
+                    <span class="lang-en">Sattvic</span>
+                    <span class="lang-hi">सात्विक</span>
+                </div>
+                <div class="ego-card-subtitle">
+                    <span class="lang-en">Purity & Awareness</span>
+                    <span class="lang-hi">शुद्धता और जागरूकता</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tooltips -->
+        <div class="tooltip" id="tamasicTooltip">
+            <h4 class="lang-en">Tamasic Ego: The Steel Chain</h4>
+            <h4 class="lang-hi">तामसिक अहंकार: स्टील की जंजीर</h4>
+            <p class="lang-en">Characterized by laziness, blame, and victimhood. "It's not my fault - circumstances are responsible." This ego refuses change and believes suffering is permanent. Like sitting in darkness, blaming everything else.</p>
+            <p class="lang-hi">आलस्य, दोषारोपण और पीड़ित भावना से चिह्नित। "यह मेरी गलती नहीं है - परिस्थितियाँ जिम्मेदार हैं।" यह अहंकार परिवर्तन से इनकार करता है और मानता है कि पीड़ा स्थायी है।</p>
+        </div>
+
+        <div class="tooltip" id="rajasicTooltip">
+            <h4 class="lang-en">Rajasic Ego: The Silver Chain</h4>
+            <h4 class="lang-hi">राजसिक अहंकार: चांदी की जंजीर</h4>
+            <p class="lang-en">Driven by ambition, validation, and results. Constantly seeking recognition, power, and success. Takes responsibility BUT also takes credit. Like running on an endless treadmill of achievement.</p>
+            <p class="lang-hi">महत्वाकांक्षा, मान्यता और परिणामों से प्रेरित। लगातार पहचान, शक्ति और सफलता की तलाश में। जिम्मेदारी लेता है लेकिन श्रेय भी लेता है। उपलब्धि की अंतहीन रेस जैसा।</p>
+        </div>
+
+        <div class="tooltip" id="sattvicTooltip">
+            <h4 class="lang-en">Sattvic Ego: The Golden Chain</h4>
+            <h4 class="lang-hi">सात्विक अहंकार: सोने की जंजीर</h4>
+            <p class="lang-en">Subtle spiritual ego saying "I'm just an instrument." More evolved, but still binding. The most dangerous because it whispers: "I'm so spiritual now, better than others." Beautiful chains, but still chains.</p>
+            <p class="lang-hi">सूक्ष्म आध्यात्मिक अहंकार जो कहता है "मैं सिर्फ एक साधन हूं।" अधिक विकसित, लेकिन फिर भी बांधने वाला। सबसे खतरनाक क्योंकि यह फुसफुसाता है: "मैं अब बहुत आध्यात्मिक हूं, दूसरों से बेहतर।"</p>
+        </div>
+
+        <h2>
+            <span class="lang-en">What is Ahankara? The Maker of "I"</span>
+            <span class="lang-hi">अहंकार क्या है? "मैं" का निर्माता</span>
+        </h2>
+        
+        <p class="lang-en">When you close your eyes and look within yourself, there is a sense of "I-ness," a sense of identification that responds to the world around you. When somebody praises you, happiness arises. When somebody criticizes you, sadness or anger emerges. This automatic reaction reveals something powerful: there is an invisible force within us controlling our life and determining how we respond to every experience. In Vedanta, this force is called Ahankara.</p>
+        <p class="lang-hi">जब आप अपनी आंखें बंद करते हैं और अपने भीतर देखते हैं, तो "मैं-पन" की एक भावना होती है, पहचान की एक भावना जो आपके आसपास की दुनिया पर प्रतिक्रिया करती है। जब कोई आपकी प्रशंसा करता है, तो खुशी पैदा होती है। जब कोई आपकी आलोचना करता है, तो उदासी या क्रोध उभरता है। यह स्वचालित प्रतिक्रिया कुछ शक्तिशाली प्रकट करती है: हमारे भीतर एक अदृश्य शक्ति है जो हमारे जीवन को नियंत्रित करती है। वेदांत में, इस शक्ति को अहंकार कहा जाता है।</p>
+
+        <div class="definition">
+            <p class="lang-en"><strong>Ahankara</strong> comes from two Sanskrit words: "Aham" (meaning "I" or that sense of I-ness) and "Kara" (meaning "the maker"). So Ahankara literally translates to "the maker of I" — the force that creates and maintains your sense of individual identity.</p>
+            <p class="lang-hi"><strong>अहंकार</strong> दो संस्कृत शब्दों से आता है: "अहम्" (जिसका अर्थ है "मैं" या मैं-पन की भावना) और "कार" (जिसका अर्थ है "निर्माता")। तो अहंकार का शाब्दिक अर्थ है "मैं का निर्माता" - वह शक्ति जो आपकी व्यक्तिगत पहचान की भावना को बनाती और बनाए रखती है।</p>
+        </div>
+
+        <div class="visual-description">
+            <p class="lang-en"><strong>Visual Metaphor:</strong> Picture Ahankara as an invisible puppeteer standing behind you, so close that you cannot see it. This puppeteer holds strings attached to your emotions, thoughts, and reactions. When life presents a situation, the puppeteer pulls the strings, and you respond — often believing the response is purely "yours." The puppeteer is so close to you, so intimately connected, that you mistake its movements for your own choices.</p>
+            <p class="lang-hi"><strong>दृश्य रूपक:</strong> अहंकार को एक अदृश्य कठपुतली वाले के रूप में चित्रित करें जो आपके पीछे खड़ा है, इतना करीब कि आप इसे देख नहीं सकते। यह कठपुतली वाला आपकी भावनाओं, विचारों और प्रतिक्रियाओं से जुड़ी डोरियाँ पकड़े हुए है। जब जीवन एक स्थिति प्रस्तुत करता है, तो कठपुतली वाला डोरियाँ खींचता है, और आप प्रतिक्रिया करते हैं - अक्सर यह विश्वास करते हुए कि प्रतिक्रिया पूरी तरह से "आपकी" है।</p>
+        </div>
+
+        <p class="lang-en">This ego is always present within us, taking every decision and creating different outcomes in our life. It determines how we are actually living without us being even aware of it. The recognition of this ego is perhaps the most important thing we must do in life, according to ancient Vedantic wisdom.</p>
+        <p class="lang-hi">यह अहंकार हमेशा हमारे भीतर मौजूद है, हर निर्णय लेता है और हमारे जीवन में अलग-अलग परिणाम बनाता है। यह निर्धारित करता है कि हम वास्तव में कैसे जी रहे हैं बिना हमारे इसके बारे में जागरूक हुए। प्राचीन वेदांतिक ज्ञान के अनुसार, इस अहंकार की पहचान शायद सबसे महत्वपूर्ण काम है जो हमें जीवन में करना चाहिए।</p>
+
+        <h2>
+            <span class="lang-en">The Essential Role of Ego: Not Your Enemy</span>
+            <span class="lang-hi">अहंकार की आवश्यक भूमिका: आपका दुश्मन नहीं</span>
+        </h2>
+
+        <p class="lang-en">When we first hear about ego or Ahankara, we immediately think of it as something negative, something to eliminate. But this understanding is incomplete and potentially harmful. The ego is not some parasitic growth that needs to be surgically removed. Rather, it comes naturally with life experience and is built into us for our very survival.</p>
+        <p class="lang-hi">जब हम पहली बार अहंकार के बारे में सुनते हैं, तो हम तुरंत इसे कुछ नकारात्मक मानते हैं, कुछ ऐसा जिसे खत्म करना है। लेकिन यह समझ अधूरी और संभावित रूप से हानिकारक है। अहंकार कोई परजीवी वृद्धि नहीं है जिसे शल्य चिकित्सा से हटाने की जरूरत है। बल्कि, यह जीवन के अनुभव के साथ स्वाभाविक रूप से आता है और हमारे अस्तित्व के लिए हममें निर्मित है।</p>
+
+        <div class="concept-card">
+            <p class="lang-en">Consider our evolutionary journey: when we were hunters and gatherers in the forest, it was precisely this ego that kept us alive. The strong identification with the body helped us protect ourselves when danger appeared. The boundary between "me" and "not me" allowed us to recognize threats and take protective action. Every animal, every bird, every living organism has this sense of identity. They all try to survive, protect themselves, and care for their offspring. This is all part of the game of ego.</p>
+            <p class="lang-hi">हमारी विकासवादी यात्रा पर विचार करें: जब हम जंगल में शिकारी और संग्रहकर्ता थे, तो यह ठीक यही अहंकार था जिसने हमें जीवित रखा। शरीर के साथ मजबूत पहचान ने हमें खतरे के प्रकट होने पर खुद को बचाने में मदद की। "मैं" और "मैं नहीं" के बीच की सीमा ने हमें खतरों को पहचानने और सुरक्षात्मक कार्रवाई करने की अनुमति दी। हर जानवर, हर पक्षी, हर जीवित जीव की यह पहचान की भावना होती है।</p>
+        </div>
+
+        <p class="lang-en">This ego is essential for us to play the game of life — as professionals, as entrepreneurs, even as spiritual seekers. The ego or identity is our Swabhava, our inherent nature. Fighting this ego is not the solution; it only creates more internal conflict and suffering.</p>
+        <p class="lang-hi">यह अहंकार हमारे लिए जीवन का खेल खेलने के लिए आवश्यक है - पेशेवरों के रूप में, उद्यमियों के रूप में, यहां तक कि आध्यात्मिक साधकों के रूप में। अहंकार या पहचान हमारा स्वभाव है, हमारी अंतर्निहित प्रकृति। इस अहंकार से लड़ना समाधान नहीं है; यह केवल अधिक आंतरिक संघर्ष और पीड़ा पैदा करता है।</p>
+
+        <div class="reflection-prompt">
+            <h4 class="lang-en">Reflection Moment</h4>
+            <h4 class="lang-hi">चिंतन का क्षण</h4>
+            <p class="lang-en">Have you ever spent days or weeks judging yourself for having certain thoughts or feelings? Have you asked yourself, "Why can't I get rid of this ego? When will I be free of it?" This very self-judgment is the ego judging itself, creating a painful loop of internal conflict.</p>
+            <p class="lang-hi">क्या आपने कभी कुछ विचारों या भावनाओं के लिए खुद को दिनों या हफ्तों तक आंकने में बिताया है? क्या आपने खुद से पूछा है, "मैं इस अहंकार से छुटकारा क्यों नहीं पा सकता? मैं कब इससे मुक्त हो जाऊंगा?" यह आत्म-निर्णय ही अहंकार खुद को आंक रहा है, आंतरिक संघर्ष का एक दर्दनाक चक्र बना रहा है।</p>
+        </div>
+
+        <h2>
+            <span class="lang-en">The True Game: Disidentification, Not Destruction</span>
+            <span class="lang-hi">असली खेल: विनाश नहीं, विलगाव</span>
+        </h2>
+
+        <p class="lang-en">After years of mental turmoil trying to fight the ego, many spiritual seekers discover a profound truth: the ego will always be there as long as the body exists. The goal is not to fight the ego but to disidentify from it — to create a separation between who we truly are and that ego or identity. This is how we can win this game.</p>
+        <p class="lang-hi">अहंकार से लड़ने की कोशिश में वर्षों के मानसिक उथल-पुथल के बाद, कई आध्यात्मिक साधक एक गहरे सत्य की खोज करते हैं: जब तक शरीर मौजूद है, अहंकार हमेशा रहेगा। लक्ष्य अहंकार से लड़ना नहीं है बल्कि इससे अलग होना है - हम वास्तव में कौन हैं और वह अहंकार या पहचान के बीच एक अलगाव बनाना। इस तरह हम इस खेल को जीत सकते हैं।</p>
+
+        <div class="key-insight">
+            <p class="lang-en"><strong>Core Insight:</strong> When you are truly liberated and recognize yourself for who you are, you realize you are one with infinite consciousness. That realization is the death of the ego. That is where the game ends. But the ego is not ready to die. It will never be ready to die. It never wants us to stop playing this game.</p>
+            <p class="lang-hi"><strong>मुख्य अंतर्दृष्टि:</strong> जब आप वास्तव में मुक्त होते हैं और खुद को पहचानते हैं कि आप कौन हैं, तो आप महसूस करते हैं कि आप अनंत चेतना के साथ एक हैं। वह अहसास अहंकार की मृत्यु है। वहीं खेल समाप्त होता है। लेकिन अहंकार मरने के लिए तैयार नहीं है। यह कभी भी मरने के लिए तैयार नहीं होगा।</p>
+        </div>
+
+        <div class="visual-description">
+            <p class="lang-en"><strong>Visual Metaphor:</strong> Imagine watching a movie. When you are completely absorbed, you forget you are sitting in a theater. You identify with the characters, feel their emotions, and react to their experiences. The ego is like this complete absorption. Disidentification is like suddenly remembering you are in a theater, watching a screen. You can still see the movie, still appreciate it, but you are no longer lost in it. You know you are the observer, not the character on the screen.</p>
+            <p class="lang-hi"><strong>दृश्य रूपक:</strong> एक फिल्म देखने की कल्पना करें। जब आप पूरी तरह से अवशोषित होते हैं, तो आप भूल जाते हैं कि आप एक थिएटर में बैठे हैं। आप पात्रों से पहचान करते हैं, उनकी भावनाओं को महसूस करते हैं, और उनके अनुभवों पर प्रतिक्रिया करते हैं। अहंकार इस पूर्ण अवशोषण जैसा है। विलगाव अचानक याद करने जैसा है कि आप एक थिएटर में हैं, एक स्क्रीन देख रहे हैं।</p>
+        </div>
+
+        <h2>
+            <span class="lang-en">The Three Faces of Ego: A Framework for Understanding</span>
+            <span class="lang-hi">अहंकार के तीन चेहरे: समझने के लिए एक रूपरेखा</span>
+        </h2>
+
+        <p class="lang-en">The great Sri Ramakrishna Paramahamsa, one of the most enlightened beings who walked this planet, gave us a powerful framework for understanding the ego. He described three distinct categories or aspects of ego that exist within each and every one of us: Tamasic ego, Rajasic ego, and Sattvic ego. Understanding these three faces is crucial because they control our behavior, choices, and ultimately our entire life experience.</p>
+        <p class="lang-hi">महान श्री रामकृष्ण परमहंस, इस ग्रह पर चलने वाले सबसे प्रबुद्ध प्राणियों में से एक, ने हमें अहंकार को समझने के लिए एक शक्तिशाली रूपरेखा दी। उन्होंने अहंकार की तीन अलग श्रेणियों या पहलुओं का वर्णन किया जो हममें से प्रत्येक के भीतर मौजूद हैं: तामसिक अहंकार, राजसिक अहंकार, और सात्विक अहंकार।</p>
+
+        <div class="journey-path">
+            <div class="journey-step">
+                <h4>
+                    <span class="lang-en">Tamasic</span>
+                    <span class="lang-hi">तामसिक</span>
+                </h4>
+                <p>
+                    <span class="lang-en">Dullness & Darkness</span>
+                    <span class="lang-hi">सुस्ती और अंधकार</span>
+                </p>
+            </div>
+            <div class="journey-step">
+                <h4>→</h4>
+            </div>
+            <div class="journey-step">
+                <h4>
+                    <span class="lang-en">Rajasic</span>
+                    <span class="lang-hi">राजसिक</span>
+                </h4>
+                <p>
+                    <span class="lang-en">Action & Ambition</span>
+                    <span class="lang-hi">कर्म और महत्वाकांक्षा</span>
+                </p>
+            </div>
+            <div class="journey-step">
+                <h4>→</h4>
+            </div>
+            <div class="journey-step">
+                <h4>
+                    <span class="lang-en">Sattvic</span>
+                    <span class="lang-hi">सात्विक</span>
+                </h4>
+                <p>
+                    <span class="lang-en">Purity & Awareness</span>
+                    <span class="lang-hi">शुद्धता और जागरूकता</span>
+                </p>
+            </div>
+        </div>
+
+        <h3>
+            <span class="lang-en">The Tamasic Ego: The Realm of Darkness</span>
+            <span class="lang-hi">तामसिक अहंकार: अंधकार का क्षेत्र</span>
+        </h3>
+
+        <div class="ego-type tamasic">
+            <p class="lang-en">Tamasic ego represents dullness, darkness, and inertia. This is the aspect of us that is strongly identified with laziness, non-activity, and lethargy. The Tamasic ego is closed to all knowledge and wisdom. It cannot accept change or growth and believes its suffering is permanent and unavoidable.</p>
+            <p class="lang-hi">तामसिक अहंकार सुस्ती, अंधकार और जड़ता का प्रतिनिधित्व करता है। यह हमारा वह पहलू है जो आलस्य, निष्क्रियता और सुस्ती से दृढ़ता से पहचाना जाता है। तामसिक अहंकार सभी ज्ञान और बुद्धि के लिए बंद है। यह परिवर्तन या विकास को स्वीकार नहीं कर सकता और मानता है कि इसकी पीड़ा स्थायी और अपरिहार्य है।</p>
+            
+            <div class="visual-description">
+                <p class="lang-en"><strong>Visual Representation:</strong> Picture a person sitting in a dark room, curtains drawn, refusing to open the door even when sunlight streams through the cracks. This person blames the darkness on everything else: the room was built wrong, someone else should have opened the curtains, it is fate that they sit in darkness. The Tamasic ego is like thick, heavy chains made of dark steel, weighing you down and keeping you immobile.</p>
+                <p class="lang-hi"><strong>दृश्य प्रतिनिधित्व:</strong> एक व्यक्ति को एक अंधेरे कमरे में बैठे हुए चित्रित करें, पर्दे खींचे हुए, दरवाजा खोलने से इनकार करते हुए तब भी जब धूप दरारों से आ रही हो। यह व्यक्ति अंधेरे के लिए हर चीज को दोष देता है। तामसिक अहंकार गहरे स्टील से बनी मोटी, भारी जंजीरों की तरह है, जो आपको नीचे की ओर खींचती है और आपको स्थिर रखती है।</p>
+            </div>
+            
+            <p class="lang-en">This is the lowest form of ego, characterized by a tendency to blame others instead of taking responsibility. When the Tamasic ego is dominant, it says: "I am not responsible for my life. My circumstances are responsible. That person did this to me. Everyone else is bad; I am good." The entire blame falls on someone else, turning you into a victim of your own life.</p>
+            <p class="lang-hi">यह अहंकार का सबसे निम्न रूप है, जिम्मेदारी लेने के बजाय दूसरों को दोष देने की प्रवृत्ति से चिह्नित। जब तामसिक अहंकार प्रभावी होता है, तो यह कहता है: "मैं अपने जीवन के लिए जिम्मेदार नहीं हूं। मेरी परिस्थितियां जिम्मेदार हैं। उस व्यक्ति ने मेरे साथ ऐसा किया। बाकी सभी बुरे हैं; मैं अच्छा हूं।"</p>
+            
+            <div class="warning-box">
+                <p class="lang-en"><strong>The Danger:</strong> The Tamasic ego is a very dangerous place to be because when we do not take responsibility for our lives, we become powerless. We surrender our agency to external circumstances and lose the ability to transform ourselves.</p>
+                <p class="lang-hi"><strong>खतरा:</strong> तामसिक अहंकार एक बहुत खतरनाक जगह है क्योंकि जब हम अपने जीवन की जिम्मेदारी नहीं लेते हैं, तो हम शक्तिहीन हो जाते हैं। हम अपनी एजेंसी को बाहरी परिस्थितियों को सौंप देते हैं और खुद को बदलने की क्षमता खो देते हैं।</p>
+            </div>
+        </div>
+
+        <h3>
+            <span class="lang-en">The Rajasic Ego: The Pursuit of External Validation</span>
+            <span class="lang-hi">राजसिक अहंकार: बाहरी मान्यता की खोज</span>
+        </h3>
+
+        <div class="ego-type rajasic">
+            <p class="lang-en">The Rajasic ego is better than the Tamasic ego, but it still binds us in its own unique way. This ego sees the world as a race to be won. It requires external validation through awards, titles, degrees, money, praise, and power. All of these become the means through which the Rajasic ego seeks to feel worthy and important.</p>
+            <p class="lang-hi">राजसिक अहंकार तामसिक अहंकार से बेहतर है, लेकिन यह अभी भी हमें अपने अनूठे तरीके से बांधता है। यह अहंकार दुनिया को एक दौड़ के रूप में देखता है जिसे जीतना है। इसे पुरस्कार, उपाधियों, डिग्री, पैसा, प्रशंसा और शक्ति के माध्यम से बाहरी मान्यता की आवश्यकता होती है।</p>
+            
+            <div class="visual-description">
+                <p class="lang-en"><strong>Visual Representation:</strong> Imagine a person running on a treadmill that keeps speeding up. Every time they reach a goal — a promotion, a recognition, an achievement — the treadmill speeds up even more. They are constantly running, driven by an invisible force, never able to stop and rest because the next goal always beckons. The Rajasic ego is like chains made of shining silver — prettier than steel, but still chains that bind.</p>
+                <p class="lang-hi"><strong>दृश्य प्रतिनिधित्व:</strong> एक व्यक्ति की कल्पना करें जो एक ट्रेडमिल पर दौड़ रहा है जो तेज होती जा रही है। हर बार जब वे एक लक्ष्य तक पहुंचते हैं - एक पदोन्नति, एक मान्यता, एक उपलब्धि - तो ट्रेडमिल और भी तेज हो जाती है। राजसिक अहंकार चमकीली चांदी से बनी जंजीरों की तरह है - स्टील से सुंदर, लेकिन फिर भी जंजीरें जो बांधती हैं।</p>
+            </div>
+            
+            <p class="lang-en">This is common in most of us who are professionals and entrepreneurs, who are driven and ambitious. We seek recognition, power, and success from the external world. The Rajasic ego is driven by ambition and becomes obsessed with the results of action. It is very much identified with and attached to the outcomes.</p>
+            <p class="lang-hi">यह हममें से अधिकांश में आम है जो पेशेवर और उद्यमी हैं, जो प्रेरित और महत्वाकांक्षी हैं। हम बाहरी दुनिया से मान्यता, शक्ति और सफलता की तलाश करते हैं। राजसिक अहंकार महत्वाकांक्षा से प्रेरित होता है और कर्म के परिणामों के साथ जुनूनी हो जाता है।</p>
+            
+            <p class="lang-en">While this ego is productive and can lead to worldly success and prosperity, it also brings significant downsides. It creates stress, pressure, anxiety, and burnout. The Rajasic ego lives in an endless loop of seeking: whenever it achieves something, it is never satisfied. It immediately seeks the next thing to achieve, creating a cycle that never ends.</p>
+            <p class="lang-hi">जबकि यह अहंकार उत्पादक है और सांसारिक सफलता और समृद्धि की ओर ले जा सकता है, यह महत्वपूर्ण कमियां भी लाता है। यह तनाव, दबाव, चिंता और थकान पैदा करता है। राजसिक अहंकार खोज के एक अंतहीन चक्र में रहता है: जब भी यह कुछ हासिल करता है, यह कभी संतुष्ट नहीं होता।</p>
+            
+            <div class="concept-card">
+                <p class="lang-en">The Rajasic ego takes responsibility for life, which is its strength. It works hard, achieves success, and even engages in charity. However, it also takes credit for everything. There is always the subtle question lurking underneath: "What will I gain from this? How will this make me look? What recognition will this bring me?"</p>
+                <p class="lang-hi">राजसिक अहंकार जीवन की जिम्मेदारी लेता है, जो इसकी ताकत है। यह कड़ी मेहनत करता है, सफलता हासिल करता है, और दान में भी संलग्न होता है। हालांकि, यह हर चीज का श्रेय भी लेता है। हमेशा नीचे छिपा एक सूक्ष्म सवाल होता है: "मुझे इससे क्या मिलेगा?"</p>
+            </div>
+        </div>
+
+        <h3>
+            <span class="lang-en">The Sattvic Ego: The Golden Chain</span>
+            <span class="lang-hi">सात्विक अहंकार: सोने की जंजीर</span>
+        </h3>
+
+        <div class="ego-type sattvic">
+            <p class="lang-en">After the Rajasic ego comes the Sattvic ego, which is much more evolved, sophisticated, and subtle. The Sattvic ego does not claim ownership of results. Instead, it says, "I am the servant of God" or "I am just an instrument." It is much more detached compared to the other egos and operates from a place of humility and service.</p>
+            <p class="lang-hi">राजसिक अहंकार के बाद सात्विक अहंकार आता है, जो बहुत अधिक विकसित, परिष्कृत और सूक्ष्म है। सात्विक अहंकार परिणामों का स्वामित्व दावा नहीं करता। इसके बजाय, यह कहता है, "मैं भगवान का सेवक हूं" या "मैं सिर्फ एक साधन हूं।" यह अन्य अहंकारों की तुलना में बहुत अधिक अलग है।</p>
+            
+            <div class="visual-description">
+                <p class="lang-en"><strong>Visual Representation:</strong> Picture a person who has replaced their heavy steel chains with beautiful golden ones. The golden chains are lighter, more elegant, and feel much better to wear. But here is the crucial insight: they are still chains. The Sattvic ego is like these golden chains — beautiful, spiritual, refined, but still binding you to a sense of separation.</p>
+                <p class="lang-hi"><strong>दृश्य प्रतिनिधित्व:</strong> एक व्यक्ति की तस्वीर लें जिसने अपनी भारी स्टील की जंजीरों को सुंदर सोने की जंजीरों से बदल दिया है। सोने की जंजीरें हल्की, अधिक सुरुचिपूर्ण हैं, और पहनने में बहुत बेहतर महसूस होती हैं। लेकिन यहां महत्वपूर्ण अंतर्दृष्टि है: वे अभी भी जंजीरें हैं।</p>
+            </div>
+            
+            <p class="lang-en">Swami Vivekananda beautifully described this concept when he called the Sattvic ego "the golden chain." He explained that the Tamasic ego might be a steel chain and the Rajasic ego a silver chain, but the Sattvic ego is a golden chain. Still, it remains a chain, and a chain binds us. Our ultimate goal should not be to wear a golden chain instead of a steel one, but to be free of all chains entirely.</p>
+            <p class="lang-hi">स्वामी विवेकानंद ने इस अवधारणा को सुंदर ढंग से वर्णित किया जब उन्होंने सात्विक अहंकार को "सोने की जंजीर" कहा। उन्होंने समझाया कि तामसिक अहंकार एक स्टील की जंजीर हो सकती है और राजसिक अहंकार एक चांदी की जंजीर, लेकिन सात्विक अहंकार एक सोने की जंजीर है। फिर भी, यह एक जंजीर है।</p>
+            
+            <div class="warning-box">
+                <p class="lang-en"><strong>The Subtle Trap:</strong> The Sattvic ego is perhaps the most dangerous because it is so subtle. Here, the ego says, "I am so spiritual now. I am not Rajasic anymore, not Tamasic anymore. I am not lazy, and I am not driven by greed and ambition." This is the ego of a spiritual seeker who tends to see themselves as someone who is much more evolved and better than others.</p>
+                <p class="lang-hi"><strong>सूक्ष्म जाल:</strong> सात्विक अहंकार शायद सबसे खतरनाक है क्योंकि यह इतना सूक्ष्म है। यहां, अहंकार कहता है, "मैं अब बहुत आध्यात्मिक हूं। मैं अब राजसिक नहीं हूं, तामसिक नहीं हूं। मैं आलसी नहीं हूं, और मैं लालच और महत्वाकांक्षा से प्रेरित नहीं हूं।"</p>
+            </div>
+            
+            <p class="lang-en">This is a very common phenomenon when we understand Vedanta. The ego whispers, "I am understanding Vedanta. I know so much." And when you understand the game of ego itself through these teachings, your ego might say in a subtle way, "Now I understand the game of ego. I know so much more than anyone else."</p>
+            <p class="lang-hi">यह एक बहुत आम घटना है जब हम वेदांत को समझते हैं। अहंकार फुसफुसाता है, "मैं वेदांत को समझ रहा हूं। मुझे बहुत कुछ पता है।" और जब आप इन शिक्षाओं के माध्यम से अहंकार के खेल को समझते हैं, तो आपका अहंकार सूक्ष्म तरीके से कह सकता है, "अब मैं अहंकार के खेल को समझता हूं।"</p>
+            
+            <p class="lang-en">The Sattvic ego is the final form of ego, the last stage before final disidentification. But it is crucial to understand that even enlightened masters continue to have ego. The true spiritual freedom is not a battle to destroy the ego but a journey of disidentification.</p>
+            <p class="lang-hi">सात्विक अहंकार अहंकार का अंतिम रूप है, अंतिम विलगाव से पहले का अंतिम चरण। लेकिन यह समझना महत्वपूर्ण है कि प्रबुद्ध गुरु भी अहंकार रखते हैं। सच्ची आध्यात्मिक स्वतंत्रता अहंकार को नष्ट करने की लड़ाई नहीं है बल्कि विलगाव की यात्रा है।</p>
+        </div>
+
+        <h2>
+            <span class="lang-en">The Path to Freedom: Witnessing Without Identification</span>
+            <span class="lang-hi">स्वतंत्रता का मार्ग: पहचान के बिना साक्षी</span>
+        </h2>
+
+        <p class="lang-en">When you master your ego, you realize a profound truth: "I am not the one who is angry; I am the one who is aware of the anger." You become untouched by the ego's movements while still being able to use it as a tool. This is when you truly begin to play the game of life consciously instead of unconsciously.</p>
+        <p class="lang-hi">जब आप अपने अहंकार में महारत हासिल करते हैं, तो आप एक गहरे सत्य का एहसास करते हैं: "मैं वह नहीं हूं जो क्रोधित है; मैं वह हूं जो क्रोध के प्रति जागरूक है।" आप अहंकार की गतिविधियों से अप्रभावित हो जाते हैं जबकि अभी भी इसे एक उपकरण के रूप में उपयोग करने में सक्षम होते हैं।</p>
+
+        <div class="key-insight">
+            <p class="lang-en"><strong>The Ultimate Realization:</strong> You understand that ego continues to exist, and you are the infinite consciousness observing it. You are free within this game. You begin to evolve yourself with this wisdom, transforming your ego from Tamasic to Rajasic to Sattvic, all while progressively disidentifying from it.</p>
+            <p class="lang-hi"><strong>परम अहसास:</strong> आप समझते हैं कि अहंकार मौजूद है, और आप अनंत चेतना हैं जो इसे देख रही है। आप इस खेल के भीतर स्वतंत्र हैं। आप इस ज्ञान के साथ खुद को विकसित करना शुरू करते हैं, अपने अहंकार को तामसिक से राजसिक से सात्विक में बदलते हुए, सभी धीरे-धीरे इससे अलग होते हुए।</p>
+        </div>
+
+        <div class="visual-description">
+            <p class="lang-en"><strong>Visual Metaphor:</strong> Think of yourself as the sky and your ego as the clouds passing through. Sometimes there are dark storm clouds (Tamasic), sometimes fast-moving active clouds (Rajasic), and sometimes light, beautiful clouds (Sattvic). But you are not any of these clouds. You are the vast, unchanging sky in which all these clouds appear and disappear. The clouds do not define the sky; they simply pass through it.</p>
+            <p class="lang-hi"><strong>दृश्य रूपक:</strong> खुद को आकाश के रूप में सोचें और अपने अहंकार को गुजरते बादलों के रूप में। कभी-कभी गहरे तूफानी बादल होते हैं (तामसिक), कभी-कभी तेजी से चलने वाले सक्रिय बादल (राजसिक), और कभी-कभी हल्के, सुंदर बादल (सात्विक)। लेकिन आप इनमें से कोई भी बादल नहीं हैं। आप विशाल, अपरिवर्तनीय आकाश हैं।</p>
+        </div>
+
+        <p class="lang-en">Throughout this journey, you disidentify from the ego and begin to look at this as a game you are playing. Eventually, you realize the ultimate truth: you were never in the game. The entire game was an appearance within you, within your infinite consciousness.</p>
+        <p class="lang-hi">इस पूरी यात्रा के दौरान, आप अहंकार से अलग हो जाते हैं और इसे एक खेल के रूप में देखना शुरू कर देते हैं जो आप खेल रहे हैं। अंततः, आप परम सत्य का एहसास करते हैं: आप कभी खेल में नहीं थे। पूरा खेल आपके भीतर, आपकी अनंत चेतना के भीतर एक उपस्थिति थी।</p>
+
+        <h2>
+            <span class="lang-en">The Power of Conscious Living</span>
+            <span class="lang-hi">सचेत जीवन की शक्ति</span>
+        </h2>
+
+        <p class="lang-en">Understanding the game of ego is crucial for taking control of your life and not letting external circumstances and events affect your internal state of being. Just imagine possessing that power where you can sit with yourself, eyes closed or open, completely detached from the ego and the external world, able to say with complete certainty:</p>
+        <p class="lang-hi">अहंकार के खेल को समझना आपके जीवन पर नियंत्रण लेने और बाहरी परिस्थितियों और घटनाओं को आपकी आंतरिक स्थिति को प्रभावित नहीं करने देने के लिए महत्वपूर्ण है। कल्पना कीजिए कि आपके पास वह शक्ति है जहां आप अपने साथ बैठ सकते हैं, आंखें बंद या खुली, अहंकार और बाहरी दुनिया से पूरी तरह से अलग:</p>
+
+        <div class="quote">
+            <p class="lang-en">"No matter what happens in my external reality, it does not affect me. I dictate my reality, and I will never let my reality dictate my internal state of being."</p>
+            <p class="lang-hi">"मेरी बाहरी वास्तविकता में कुछ भी हो, यह मुझे प्रभावित नहीं करता। मैं अपनी वास्तविकता को निर्देशित करता हूं, और मैं कभी भी अपनी वास्तविकता को अपनी आंतरिक स्थिति को निर्देशित नहीं करने दूंगा।"</p>
+        </div>
+
+        <p class="lang-en">This is the place of true power that we must aspire to reach. This is not about becoming cold or unfeeling; rather, it is about becoming deeply free. You can still experience the full range of human emotions, engage fully with life, pursue your goals, and love deeply. But you are no longer enslaved by these experiences. You are the conscious player, not the unconscious pawn.</p>
+        <p class="lang-hi">यह सच्ची शक्ति का स्थान है जिस तक हमें पहुंचने की आकांक्षा करनी चाहिए। यह ठंडा या भावनाहीन बनने के बारे में नहीं है; बल्कि, यह गहराई से मुक्त होने के बारे में है। आप अभी भी मानवीय भावनाओं की पूरी श्रृंखला का अनुभव कर सकते हैं, जीवन के साथ पूरी तरह से जुड़ सकते हैं, अपने लक्ष्यों का पीछा कर सकते हैं, और गहराई से प्यार कर सकते हैं।</p>
+
+        <div class="reflection-prompt">
+            <h4 class="lang-en">Your Practice</h4>
+            <h4 class="lang-hi">आपका अभ्यास</h4>
+            <p class="lang-en">Begin observing which form of ego is most active in your life right now. Are you caught in blame and victimhood (Tamasic)? Are you driven by endless achievement and validation (Rajasic)? Or have you entered the subtle realm of spiritual superiority (Sattvic)? There is no judgment here — only awareness. And awareness is the first step toward freedom.</p>
+            <p class="lang-hi">अभी अपने जीवन में कौन सा अहंकार रूप सबसे अधिक सक्रिय है, यह देखना शुरू करें। क्या आप दोष और पीड़ित भावना में फंसे हैं (तामसिक)? क्या आप अंतहीन उपलब्धि और मान्यता से प्रेरित हैं (राजसिक)? या आपने आध्यात्मिक श्रेष्ठता के सूक्ष्म क्षेत्र में प्रवेश किया है (सात्विक)? यहां कोई निर्णय नहीं है - केवल जागरूकता। और जागरूकता स्वतंत्रता की ओर पहला कदम है।</p>
+        </div>
+
+        <h2>
+            <span class="lang-en">The Journey Continues</span>
+            <span class="lang-hi">यात्रा जारी है</span>
+        </h2>
+
+        <p class="lang-en">The ego will continue to play its game because that is its nature. Nobody wants to die, and the ego wishes to preserve its identity in whatever way possible. But the more we can detach from it, witness it from a distance, and recognize our true nature as something apart from it, the more power we reclaim from the ego.</p>
+        <p class="lang-hi">अहंकार अपना खेल खेलता रहेगा क्योंकि यही इसकी प्रकृति है। कोई भी मरना नहीं चाहता, और अहंकार अपनी पहचान को किसी भी तरह से संरक्षित करना चाहता है। लेकिन जितना अधिक हम इससे अलग हो सकते हैं, इसे दूर से देख सकते हैं, और अपनी सच्ची प्रकृति को कुछ अलग के रूप में पहचान सकते हैं, उतनी ही अधिक शक्ति हम अहंकार से वापस ले सकते हैं।</p>
+
+        <p class="lang-en">The more fulfilled, joyful, and blissful we become. This is not the end of the journey but rather the beginning of conscious living. Within the world of Maya (illusion), you now understand the rules of the game. You are no longer controlled by the ego. You are free, and you understand that while ego continues to exist, you are the infinite consciousness that was never bound to begin with.</p>
+        <p class="lang-hi">हम जितने अधिक संतुष्ट, आनंदमय और आनंदित होते हैं। यह यात्रा का अंत नहीं है बल्कि सचेत जीवन की शुरुआत है। माया (भ्रम) की दुनिया के भीतर, अब आप खेल के नियमों को समझते हैं। आप अब अहंकार द्वारा नियंत्रित नहीं हैं। आप स्वतंत्र हैं, और आप समझते हैं कि जबकि अहंकार मौजूद है, आप वह अनंत चेतना हैं जो कभी बंधी ही नहीं थी।</p>
+
+        <div class="concept-card">
+            <p class="lang-en">Remember: the goal is not to wear better chains but to recognize that you were never truly chained. The chains were always an appearance, a game, a play of consciousness. And now that you know this, you can play the game with full awareness, with joy, and with freedom.</p>
+            <p class="lang-hi">याद रखें: लक्ष्य बेहतर जंजीरें पहनना नहीं है बल्कि यह पहचानना है कि आप कभी वास्तव में जंजीर में नहीं थे। जंजीरें हमेशा एक उपस्थिति थीं, एक खेल, चेतना का एक खेल। और अब जब आप यह जानते हैं, तो आप पूर्ण जागरूकता, खुशी और स्वतंत्रता के साथ खेल खेल सकते हैं।</p>
+        </div>
+
+        <footer>
+            <p><strong class="lang-en">Created:</strong><strong class="lang-hi">निर्माण:</strong> October 28, 2025 | <span class="lang-en">Year:</span><span class="lang-hi">वर्ष:</span> 2025</p>
+            <p class="lang-en">This webpage was created to transform complex Vedantic wisdom about ego and consciousness into an accessible, visual learning experience. Vipul Anand was exploring the profound concept of Ahankara (ego) and how understanding its three forms—Tamasic, Rajasic, and Sattvic—can lead to spiritual freedom through disidentification rather than destruction. The goal was to create a resource that makes ancient wisdom practical and memorable, helping learners retain these transformative insights through visual metaphors, clear explanations, and reflective prompts. This page serves as both a teaching tool and a reminder that true liberation comes from witnessing the ego's game rather than being lost in it. Enhanced with bilingual support (Hindi-English), interactive ego visualizations with tooltips, dark/light theme switching, and a powerful text highlighting system with personal note-taking capabilities—all designed to maximize learning retention and make this wisdom accessible across languages and learning styles.</p>
+            <p class="lang-hi">यह वेबपेज अहंकार और चेतना के बारे में जटिल वेदांतिक ज्ञान को एक सुलभ, दृश्य सीखने के अनुभव में बदलने के लिए बनाया गया था। विपुल आनंद अहंकार (अहंकार) की गहन अवधारणा की खोज कर रहे थे और इसके तीन रूपों-तामसिक, राजसिक और सात्विक-को समझना आध्यात्मिक स्वतंत्रता की ओर कैसे ले जा सकता है। लक्ष्य एक ऐसा संसाधन बनाना था जो प्राचीन ज्ञान को व्यावहारिक और यादगार बनाता है। द्विभाषी समर्थन, इंटरएक्टिव अहंकार विज़ुअलाइज़ेशन, डार्क/लाइट थीम स्विचिंग, और व्यक्तिगत नोट लेने की क्षमताओं के साथ एक शक्तिशाली टेक्स्ट हाइलाइटिंग सिस्टम के साथ बढ़ाया गया।</p>
+            <p class="timestamp">Timestamp: 2025-10-28T00:00:00Z | Repository: spiritual-wisdom-collection</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme Management
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+        updateThemeButton(savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeButton(newTheme);
+        });
+        
+        function updateThemeButton(theme) {
+            const icon = themeToggle.querySelector('span:first-child');
+            icon.textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
+        // Language Management
+        const langToggle = document.getElementById('langToggle');
+        
+        // Load saved language
+        const savedLang = localStorage.getItem('language') || 'en';
+        body.setAttribute('data-lang', savedLang);
+        
+        langToggle.addEventListener('click', () => {
+            const currentLang = body.getAttribute('data-lang');
+            const newLang = currentLang === 'en' ? 'hi' : 'en';
+            body.setAttribute('data-lang', newLang);
+            localStorage.setItem('language', newLang);
+        });
+
+        // Interactive Ego Cards with Tooltips
+        const egoCards = document.querySelectorAll('.ego-card');
+        const tooltips = {
+            tamasic: document.getElementById('tamasicTooltip'),
+            rajasic: document.getElementById('rajasicTooltip'),
+            sattvic: document.getElementById('sattvicTooltip')
+        };
+
+        egoCards.forEach(card => {
+            const egoType = card.getAttribute('data-ego');
+            const tooltip = tooltips[egoType];
+
+            // Desktop hover
+            card.addEventListener('mouseenter', (e) => {
+                showTooltip(tooltip, card);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                hideTooltip(tooltip);
+            });
+
+            // Mobile tap
+            card.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Hide all tooltips first
+                Object.values(tooltips).forEach(t => hideTooltip(t));
+                showTooltip(tooltip, card);
+            });
+        });
+
+        // Close tooltip when clicking outside
+        document.addEventListener('click', () => {
+            Object.values(tooltips).forEach(t => hideTooltip(t));
+        });
+
+        function showTooltip(tooltip, card) {
+            const rect = card.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+            
+            // Position below card on mobile, to the side on desktop
+            if (window.innerWidth <= 768) {
+                tooltip.style.top = (rect.bottom + scrollTop + 10) + 'px';
+                tooltip.style.left = (rect.left + scrollLeft) + 'px';
+            } else {
+                tooltip.style.top = (rect.top + scrollTop) + 'px';
+                tooltip.style.left = (rect.right + scrollLeft + 10) + 'px';
+            }
+            
+            tooltip.classList.add('show');
+        }
+
+        function hideTooltip(tooltip) {
+            tooltip.classList.remove('show');
+        }
+
+        // Text Highlighting System
+        let highlightMode = false;
+        let highlights = JSON.parse(localStorage.getItem('highlights') || '[]');
+        let currentSelection = null;
+
+        const highlightToggle = document.getElementById('highlightToggle');
+        const noteModal = document.getElementById('noteModal');
+        const highlightsModal = document.getElementById('highlightsModal');
+        const closeNoteModal = document.getElementById('closeNoteModal');
+        const closeHighlightsModal = document.getElementById('closeHighlightsModal');
+        const cancelNote = document.getElementById('cancelNote');
+        const saveNote = document.getElementById('saveNote');
+        const noteText = document.getElementById('noteText');
+        const highlightPreview = document.getElementById('highlightPreview');
+        const viewHighlights = document.getElementById('viewHighlights');
+        const highlightsList = document.getElementById('highlightsList');
+        const clearAllHighlights = document.getElementById('clearAllHighlights');
+        const closeHighlightsList = document.getElementById('closeHighlightsList');
+        const mainContent = document.getElementById('mainContent');
+
+        // Update highlight count
+        updateHighlightCount();
+
+        highlightToggle.addEventListener('click', () => {
+            highlightMode = !highlightMode;
+            highlightToggle.classList.toggle('active');
+            
+            if (highlightMode) {
+                document.body.style.cursor = 'text';
+            } else {
+                document.body.style.cursor = 'default';
+            }
+        });
+
+        // Text selection handling
+        document.addEventListener('mouseup', () => {
+            if (!highlightMode) return;
+
+            const selection = window.getSelection();
+            const selectedText = selection.toString().trim();
+
+            if (selectedText.length > 0) {
+                currentSelection = {
+                    text: selectedText,
+                    range: selection.getRangeAt(0)
+                };
+
+                highlightPreview.textContent = selectedText;
+                noteText.value = '';
+                noteModal.classList.add('show');
+            }
+        });
+
+        // Save highlight with note
+        saveNote.addEventListener('click', () => {
+            if (currentSelection) {
+                const highlight = {
+                    id: Date.now(),
+                    text: currentSelection.text,
+                    note: noteText.value,
+                    timestamp: new Date().toISOString()
+                };
+
+                highlights.push(highlight);
+                localStorage.setItem('highlights', JSON.stringify(highlights));
+
+                // Apply highlight to DOM
+                applyHighlightToDOM(currentSelection.range, highlight.id);
+
+                noteModal.classList.remove('show');
+                currentSelection = null;
+                updateHighlightCount();
+            }
+        });
+
+        // Cancel note
+        cancelNote.addEventListener('click', () => {
+            noteModal.classList.remove('show');
+            currentSelection = null;
+        });
+
+        closeNoteModal.addEventListener('click', () => {
+            noteModal.classList.remove('show');
+            currentSelection = null;
+        });
+
+        // Apply highlight to DOM
+        function applyHighlightToDOM(range, highlightId) {
+            const span = document.createElement('span');
+            span.className = 'user-highlight';
+            span.setAttribute('data-highlight-id', highlightId);
+            
+            try {
+                range.surroundContents(span);
+                
+                // Add note indicator if there's a note
+                const highlight = highlights.find(h => h.id === highlightId);
+                if (highlight && highlight.note) {
+                    const indicator = document.createElement('span');
+                    indicator.className = 'highlight-note-indicator';
+                    indicator.textContent = '📝';
+                    indicator.title = 'View note';
+                    span.appendChild(indicator);
+                }
+
+                // Click handler to view note
+                span.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showHighlightNote(highlightId);
+                });
+            } catch (e) {
+                console.error('Could not apply highlight:', e);
+            }
+        }
+
+        // Show highlight note
+        function showHighlightNote(highlightId) {
+            const highlight = highlights.find(h => h.id === highlightId);
+            if (highlight) {
+                highlightPreview.textContent = highlight.text;
+                noteText.value = highlight.note;
+                
+                // Change save button to update
+                saveNote.textContent = 'Update Note';
+                saveNote.onclick = () => {
+                    highlight.note = noteText.value;
+                    localStorage.setItem('highlights', JSON.stringify(highlights));
+                    noteModal.classList.remove('show');
+                    reloadHighlights();
+                    saveNote.textContent = 'Save Note';
+                    saveNote.onclick = saveNote.addEventListener('click', saveNote);
+                };
+                
+                noteModal.classList.add('show');
+            }
+        }
+
+        // View all highlights
+        viewHighlights.addEventListener('click', () => {
+            displayHighlightsList();
+            highlightsModal.classList.add('show');
+        });
+
+        function displayHighlightsList() {
+            if (highlights.length === 0) {
+                highlightsList.innerHTML = '<p style="text-align: center; opacity: 0.6;">No highlights yet. Start highlighting important text!</p>';
+                return;
+            }
+
+            highlightsList.innerHTML = '';
+            highlights.forEach(highlight => {
+                const item = document.createElement('div');
+                item.className = 'highlight-item';
+                
+                const text = document.createElement('div');
+                text.className = 'highlight-text';
+                text.textContent = `"${highlight.text}"`;
+                
+                const note = document.createElement('div');
+                note.className = 'highlight-note';
+                note.textContent = highlight.note || 'No note added';
+                
+                const actions = document.createElement('div');
+                actions.className = 'highlight-actions';
+                
+                const editBtn = document.createElement('button');
+                editBtn.className = 'btn btn-secondary';
+                editBtn.textContent = 'Edit';
+                editBtn.onclick = () => {
+                    highlightsModal.classList.remove('show');
+                    showHighlightNote(highlight.id);
+                };
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'btn btn-danger';
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.onclick = () => {
+                    deleteHighlight(highlight.id);
+                };
+                
+                actions.appendChild(editBtn);
+                actions.appendChild(deleteBtn);
+                
+                item.appendChild(text);
+                if (highlight.note) {
+                    item.appendChild(note);
+                }
+                item.appendChild(actions);
+                
+                highlightsList.appendChild(item);
+            });
+        }
+
+        function deleteHighlight(highlightId) {
+            highlights = highlights.filter(h => h.id !== highlightId);
+            localStorage.setItem('highlights', JSON.stringify(highlights));
+            
+            // Remove from DOM
+            const highlightElement = document.querySelector(`[data-highlight-id="${highlightId}"]`);
+            if (highlightElement) {
+                const parent = highlightElement.parentNode;
+                while (highlightElement.firstChild) {
+                    parent.insertBefore(highlightElement.firstChild, highlightElement);
+                }
+                parent.removeChild(highlightElement);
+            }
+            
+            displayHighlightsList();
+            updateHighlightCount();
+        }
+
+        clearAllHighlights.addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear all highlights? This cannot be undone.')) {
+                highlights = [];
+                localStorage.setItem('highlights', JSON.stringify(highlights));
+                reloadHighlights();
+                highlightsModal.classList.remove('show');
+                updateHighlightCount();
+            }
+        });
+
+        closeHighlightsModal.addEventListener('click', () => {
+            highlightsModal.classList.remove('show');
+        });
+
+        closeHighlightsList.addEventListener('click', () => {
+            highlightsModal.classList.remove('show');
+        });
+
+        function updateHighlightCount() {
+            document.getElementById('highlightCount').textContent = highlights.length;
+            document.getElementById('highlightCountHi').textContent = highlights.length;
+        }
+
+        function reloadHighlights() {
+            // Remove all existing highlights from DOM
+            document.querySelectorAll('.user-highlight').forEach(el => {
+                const parent = el.parentNode;
+                while (el.firstChild) {
+                    parent.insertBefore(el.firstChild, el);
+                }
+                parent.removeChild(el);
+            });
+            
+            // This would require storing more information about highlights
+            // For simplicity, we'll just update the list
+            displayHighlightsList();
+        }
+
+        // Load existing highlights on page load
+        window.addEventListener('load', () => {
+            // Note: For full functionality, we'd need to store more information
+            // about the highlight location (XPath, etc.) to recreate them
+            // This is a simplified version
+            updateHighlightCount();
+        });
+
+        // Close modals when clicking outside
+        noteModal.addEventListener('click', (e) => {
+            if (e.target === noteModal) {
+                noteModal.classList.remove('show');
+            }
+        });
+
+        highlightsModal.addEventListener('click', (e) => {
+            if (e.target === highlightsModal) {
+                highlightsModal.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
