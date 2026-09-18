@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Shape of Humility — Floor, Ceiling, and the Instrument Between</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cardo:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  :root{
+    --parchment:#f4ede1;
+    --parchment-deep:#ece1d0;
+    --ink:#2e2823;
+    --ink-soft:#4a4039;
+    --ink-faint:#7a6e62;
+    --rule:#d8c9b2;
+    --card:#fbf6ec;
+    --terracotta:#bd5734;
+    --terracotta-deep:#9c4527;
+    --floor:#5d6f78;      /* dusty slate — false modesty, the deflated pole */
+    --ceiling:#c8923c;    /* honey / amber — the unselfconscious pole */
+    --solved:#6e7f4e;     /* olive — what tracks something real */
+    --shadow:rgba(46,40,35,0.12);
+  }
+  html[data-theme="dark"]{
+    --parchment:#1c1916;
+    --parchment-deep:#15120f;
+    --ink:#ece1d0;
+    --ink-soft:#cdbfa9;
+    --ink-faint:#9c8d79;
+    --rule:#3a322a;
+    --card:#241f1a;
+    --terracotta:#dd7048;
+    --terracotta-deep:#c2582e;
+    --floor:#7e909a;
+    --ceiling:#d6a44f;
+    --solved:#8fa067;
+    --shadow:rgba(0,0,0,0.4);
+  }
+
+  body{
+    font-family:'Cardo',Georgia,serif;
+    background:var(--parchment);color:var(--ink);
+    line-height:1.75;font-size:1.12rem;
+    transition:background .4s ease,color .4s ease;overflow-x:hidden;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:2rem 1.5rem 4rem;}
+
+  h1,h2,h3,.eyebrow{font-family:'Cormorant Garamond',serif;}
+  h1{font-size:clamp(2.6rem,7vw,4.2rem);font-weight:700;line-height:1.04;letter-spacing:-.5px;}
+  h2{font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:600;margin-bottom:.6rem;line-height:1.12;}
+  h3{font-size:1.5rem;font-weight:600;}
+  em{font-style:italic;}
+  .eyebrow{
+    font-family:'Courier Prime',monospace;text-transform:uppercase;letter-spacing:.32em;
+    font-size:.72rem;color:var(--terracotta);font-weight:700;display:block;margin-bottom:1rem;
+  }
+
+  .toggle{
+    position:fixed;top:1.1rem;right:1.1rem;z-index:50;
+    background:var(--card);color:var(--ink);border:1px solid var(--rule);border-radius:999px;
+    padding:.5rem .9rem;cursor:pointer;font-family:'Courier Prime',monospace;font-size:.72rem;
+    letter-spacing:.1em;box-shadow:0 4px 14px var(--shadow);transition:transform .2s ease;
+  }
+  .toggle:hover{transform:translateY(-2px);}
+
+  .hero{padding:4rem 0 2.5rem;border-bottom:1px solid var(--rule);}
+  .hero p.lede{font-size:1.3rem;color:var(--ink-soft);margin-top:1.4rem;max-width:46ch;}
+  .source-note{
+    margin-top:1.6rem;font-family:'Courier Prime',monospace;font-size:.74rem;
+    color:var(--ink-faint);letter-spacing:.04em;line-height:1.7;
+  }
+
+  section{padding:3rem 0;border-bottom:1px solid var(--rule);}
+  section:last-of-type{border-bottom:none;}
+  p+p{margin-top:1.1rem;}
+  .lead-in{color:var(--ink-soft);max-width:62ch;}
+
+  .thesis{
+    font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3.6vw,2rem);
+    font-weight:500;font-style:italic;line-height:1.4;color:var(--ink);
+    border-left:3px solid var(--terracotta);padding:.4rem 0 .4rem 1.4rem;margin:1.4rem 0 .4rem;
+  }
+  .thesis small{
+    display:block;font-style:normal;font-family:'Courier Prime',monospace;
+    font-size:.7rem;letter-spacing:.06em;color:var(--ink-faint);margin-top:.9rem;
+  }
+
+  /* ---------- axis figure ---------- */
+  .axis-fig{
+    background:var(--card);border:1px solid var(--rule);border-radius:16px;
+    padding:1.6rem 1.4rem 1.2rem;margin-top:1.8rem;box-shadow:0 6px 20px var(--shadow);
+  }
+  .axis-fig svg{width:100%;height:auto;display:block;}
+  .axis-fig figcaption{
+    font-family:'Courier Prime',monospace;font-size:.7rem;letter-spacing:.05em;
+    color:var(--ink-faint);text-align:center;margin-top:1rem;line-height:1.6;
+  }
+
+  /* ---------- two poles ---------- */
+  .poles{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.6rem;}
+  .pole{
+    background:var(--card);border:1px solid var(--rule);border-radius:16px;
+    overflow:hidden;box-shadow:0 6px 20px var(--shadow);
+  }
+  .pole-head{padding:1.1rem 1.3rem;color:#fff;}
+  .pole[data-p="floor"] .pole-head{background:var(--floor);}
+  .pole[data-p="ceiling"] .pole-head{background:var(--ceiling);}
+  .pole-head .pname{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;line-height:1;}
+  .pole-head .parrow{font-family:'Courier Prime',monospace;font-size:.72rem;letter-spacing:.08em;opacity:.95;display:block;margin-top:.4rem;}
+  .pole-body{padding:1.2rem 1.3rem 1.4rem;}
+  .pole-body p{font-size:1rem;color:var(--ink-soft);}
+  .pole-body p+p{margin-top:.8rem;}
+  .pole-body .claim{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--ink);margin-bottom:.7rem;}
+
+  /* ---------- confusion table ---------- */
+  .table-scroll{
+    margin-top:1.6rem;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border-radius:12px;
+  }
+  .table-scroll .map-table{margin-top:0;min-width:540px;}
+  .scroll-hint{
+    display:none;font-family:'Courier Prime',monospace;font-size:.64rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-faint);margin-top:.6rem;
+  }
+  @media(max-width:640px){ .scroll-hint{display:block;} }
+
+  .map-table{width:100%;border-collapse:collapse;margin-top:1.6rem;font-size:.98rem;}
+  .map-table th,.map-table td{text-align:left;padding:.8rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top;}
+  .map-table th{font-family:'Courier Prime',monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;}
+  .map-table td:first-child{font-family:'Courier Prime',monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;padding-top:1rem;}
+  .map-table td.is-not{color:var(--floor);font-weight:600;}
+  .map-table td.is{color:var(--solved);font-weight:600;}
+
+  /* ---------- instrument ---------- */
+  .instrument{
+    background:var(--card);border:1px solid var(--rule);border-radius:16px;
+    padding:1.6rem 1.5rem;margin-top:1.8rem;box-shadow:0 6px 20px var(--shadow);
+  }
+  .moment{padding:1.1rem 0;border-bottom:1px dashed var(--rule);}
+  .moment:last-of-type{border-bottom:none;}
+  .moment .mnum{font-family:'Courier Prime',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--terracotta);font-weight:700;}
+  .moment h3{font-size:1.3rem;margin:.2rem 0 .3rem;}
+  .moment p{font-size:1rem;color:var(--ink-soft);}
+  .moment .tell{font-family:'Courier Prime',monospace;font-size:.72rem;color:var(--ink-faint);margin-top:.5rem;line-height:1.7;}
+  .slider-row{display:flex;align-items:center;gap:.9rem;margin-top:.8rem;}
+  .slider-row input[type=range]{flex:1;accent-color:var(--terracotta);height:22px;cursor:pointer;}
+  .slider-row .val{
+    font-family:'Courier Prime',monospace;font-size:.9rem;font-weight:700;color:var(--terracotta);
+    min-width:2.4rem;text-align:right;
+  }
+  .gauge-box{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--rule);}
+  .gauge-track{
+    position:relative;height:16px;border-radius:999px;margin-top:.9rem;
+    background:linear-gradient(90deg,var(--floor),var(--terracotta),var(--ceiling));
+  }
+  .gauge-pin{
+    position:absolute;top:-7px;width:4px;height:30px;border-radius:2px;background:var(--ink);
+    transition:left .3s ease;box-shadow:0 0 0 3px var(--card);
+  }
+  .gauge-ends{display:flex;justify-content:space-between;font-family:'Courier Prime',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-top:.7rem;}
+  .verdict{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;margin-top:1rem;line-height:1.35;}
+  .verdict-note{font-size:1rem;color:var(--ink-soft);margin-top:.4rem;}
+  .score-line{font-family:'Courier Prime',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);}
+
+  /* ---------- callouts ---------- */
+  .callout{
+    margin-top:1.8rem;background:var(--card);border:1px solid var(--rule);
+    border-radius:0 12px 12px 0;padding:1.4rem 1.5rem;
+  }
+  .callout h3{margin-bottom:.5rem;}
+  .callout p{font-size:1.02rem;color:var(--ink-soft);}
+  .callout p+p{margin-top:.7rem;}
+  .callout--warn{border-left:4px solid var(--terracotta);}
+  .callout--hinge{border-left:4px solid var(--solved);}
+  .callout--hold{border-left:4px solid var(--ceiling);}
+  .callout .tag{font-family:'Courier Prime',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);display:block;margin-bottom:.3rem;}
+
+  /* ---------- recall ---------- */
+  .recall{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:1.6rem;margin-top:1.4rem;}
+  .recall-q{padding:1rem 0;border-bottom:1px dashed var(--rule);}
+  .recall-q:last-child{border-bottom:none;padding-bottom:0;}
+  .recall-q .q{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;}
+  .reveal-btn{
+    margin-top:.6rem;background:transparent;color:var(--terracotta);
+    border:1px solid var(--terracotta);border-radius:999px;padding:.32rem .9rem;cursor:pointer;
+    font-family:'Courier Prime',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:all .2s ease;
+  }
+  .reveal-btn:hover{background:var(--terracotta);color:#fff;}
+  .answer{max-height:0;overflow:hidden;transition:max-height .35s ease;color:var(--ink-soft);}
+  .answer p{margin-top:.8rem;font-size:1rem;}
+
+  .disclaimer{font-family:'Courier Prime',monospace;font-size:.68rem;color:var(--ink-faint);margin-top:1.2rem;letter-spacing:.03em;line-height:1.7;}
+
+  /* ---------- footer ---------- */
+  footer{margin-top:3rem;background:var(--ink);color:var(--parchment);border-radius:18px;padding:2.2rem 2rem;text-align:center;}
+  html[data-theme="dark"] footer{background:#0e0c0a;}
+  footer .ftitle{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;}
+  footer .fmeta{font-family:'Courier Prime',monospace;font-size:.72rem;letter-spacing:.05em;color:#cdbfa9;margin-top:.5rem;}
+  .timestamp{color:var(--terracotta);}
+  .creation-context{
+    background:rgba(255,255,255,0.06);border-radius:12px;padding:1.1rem 1.3rem;margin-top:1.4rem;
+    text-align:left;font-size:.74rem;line-height:1.7;color:#bdae99;font-family:'Courier Prime',monospace;
+  }
+  .creation-context strong{color:var(--parchment);}
+
+  .reveal-on-scroll{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal-on-scroll.in{opacity:1;transform:none;}
+
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;}
+    .reveal-on-scroll{opacity:1;transform:none;}
+  }
+  @media(max-width:640px){
+    .poles{grid-template-columns:1fr;}
+    body{font-size:1.06rem;}
+  }
+</style>
+</head>
+<body>
+
+<button class="toggle" id="themeToggle" aria-label="Toggle light and dark theme">◐ theme</button>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <span class="eyebrow">A Study in Observable Virtue</span>
+    <h1>The Shape<br>of Humility</h1>
+    <p class="lede">Humility is the one quality that vanishes the moment it is claimed. So this page does not ask what it is in the abstract. It asks where it can be <em>seen</em> — and builds a five-point instrument for looking, with a floor and a ceiling marked at either end.</p>
+    <p class="source-note">
+      Origin: a conversation between Vipul Anand and Claude, 18 September 2026.<br>
+      The definition, the five moments, the floor–ceiling axis, and the two worked examples are original to that exchange.<br>
+      No external framework is cited, because none was used.
+    </p>
+  </header>
+
+  <!-- ORIENTATION -->
+  <section class="reveal-on-scroll">
+    <span class="eyebrow">Before the Argument</span>
+    <h2>Why the word keeps slipping</h2>
+    <p class="lead-in">Most virtues survive being named. You can call yourself patient and still be patient; you can call yourself disciplined and the discipline does not evaporate. Humility is different. The claim is self-refuting — the sentence <em>"I am humble"</em> is already evidence for the other side. That single property is what makes it hard to teach and almost impossible to self-assess.</p>
+    <p>So the useful move is not to define it harder. It is to stop looking at the quality and start looking at the <em>moments</em> where it must either show or fail. Humility is not a state you can inspect at rest. It is a load-bearing behaviour, and load is what reveals it.</p>
+
+    <div class="thesis">
+      Humility is an accurate estimate of yourself, held lightly, with attention pointed outward.
+      <small>Three clauses. Drop any one and you get something that only resembles it.</small>
+    </div>
+
+    <p>Read the clauses separately. <strong>Accurate</strong> rules out both inflation and deflation — the humble person knows precisely what they are good at. <strong>Held lightly</strong> means the estimate is not load-bearing for their sense of worth, so it can be revised without injury. <strong>Pointed outward</strong> is the decisive one: attention is on the work, the problem, the other person. Not thinking less of yourself. Thinking of yourself less.</p>
+  </section>
+
+  <!-- WHAT IT IS NOT -->
+  <section class="reveal-on-scroll">
+    <span class="eyebrow">Clearing the Ground</span>
+    <h2>Four things that wear the costume</h2>
+    <p class="lead-in">Each of these is commonly filed as humility. Each one fails on at least one of the three clauses — and the failure is almost always the third.</p>
+
+    <div class="table-scroll">
+    <table class="map-table">
+      <thead>
+        <tr><th>Moment</th><th>Looks like humility</th><th>Actually is</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Self-deprecation</td><td class="is-not">"Oh, I'm terrible at this."</td><td class="is">Inaccurate estimate, attention still on self</td></tr>
+        <tr><td>Deflecting praise</td><td class="is-not">"It was nothing, really."</td><td class="is">Often a bid for the praise to be repeated</td></tr>
+        <tr><td>Silence</td><td class="is-not">Never speaking up in the room</td><td class="is">May be fear, or contempt, or disengagement</td></tr>
+        <tr><td>Announced humility</td><td class="is-not">"I try to stay humble about it."</td><td class="is">Self-refuting; the claim points attention inward</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="scroll-hint">← swipe the table sideways →</p>
+
+    <div class="callout callout--warn">
+      <span class="tag">The Diagnostic</span>
+      <h3>One question separates all four from the real thing</h3>
+      <p>After the behaviour, where is the attention sitting? If it has moved to the work or the other person, it was humility. If it has circled back to <em>how the behaviour landed</em>, it was the costume. The costume is not arrogance's opposite — it is arrogance wearing a different coat, because both keep the self at the centre of the frame.</p>
+    </div>
+  </section>
+
+  <!-- THE INSTRUMENT -->
+  <section class="reveal-on-scroll">
+    <span class="eyebrow">The Observation System</span>
+    <h2>Five moments where it must show</h2>
+    <p class="lead-in">Humility cannot be observed at rest, so watch under load. These five moments are chosen because each one offers a cheap, tempting, self-serving option — and taking the other path costs something. Score each from 0 to 5 as you observe a person over time. The instrument below is live: move the sliders and the pin moves between floor and ceiling.</p>
+
+    <div class="instrument">
+
+      <div class="moment">
+        <span class="mnum">Moment 01</span>
+        <h3>Being wrong</h3>
+        <p>How fast and how cleanly do they update? The tell is not whether they admit it — most people eventually do. The tell is whether the admission arrives <em>with a defence attached</em>.</p>
+        <p class="tell">0 · never wrong, only misunderstood &nbsp;·&nbsp; 3 · concedes, but slowly and with terms &nbsp;·&nbsp; 5 · "I was wrong," full stop, then moves on</p>
+        <div class="slider-row">
+          <input type="range" min="0" max="5" value="3" class="m" id="m1" aria-label="Score for being wrong">
+          <span class="val" id="v1">3</span>
+        </div>
+      </div>
+
+      <div class="moment">
+        <span class="mnum">Moment 02</span>
+        <h3>Credit and blame</h3>
+        <p>Two flows, opposite directions. When it works, where does credit go? When it fails, where does blame go? Watch both — a person can be generous with credit and still off-load blame, and that asymmetry is the whole diagnosis.</p>
+        <p class="tell">0 · credit inward, blame outward &nbsp;·&nbsp; 3 · fair-minded when it costs nothing &nbsp;·&nbsp; 5 · credit outward, blame absorbed, no ledger kept</p>
+        <div class="slider-row">
+          <input type="range" min="0" max="5" value="3" class="m" id="m2" aria-label="Score for credit and blame">
+          <span class="val" id="v2">3</span>
+        </div>
+      </div>
+
+      <div class="moment">
+        <span class="mnum">Moment 03</span>
+        <h3>Airtime</h3>
+        <p>Do they need to be heard more than they need to understand? Count the questions they ask that they do not already know the answer to. That number is hard to fake and almost never zero by accident.</p>
+        <p class="tell">0 · speaks to be seen speaking &nbsp;·&nbsp; 3 · listens, but waits for the gap &nbsp;·&nbsp; 5 · asks, then changes position in front of you</p>
+        <div class="slider-row">
+          <input type="range" min="0" max="5" value="3" class="m" id="m3" aria-label="Score for airtime">
+          <span class="val" id="v3">3</span>
+        </div>
+      </div>
+
+      <div class="moment">
+        <span class="mnum">Moment 04</span>
+        <h3>The powerless</h3>
+        <p>How do they treat people who can do nothing for them? This is the least fakeable of the five, because performance requires an audience worth performing for — and here, by construction, there isn't one.</p>
+        <p class="tell">0 · courtesy scales with usefulness &nbsp;·&nbsp; 3 · polite but unmemorable &nbsp;·&nbsp; 5 · identical manner regardless of who is watching</p>
+        <div class="slider-row">
+          <input type="range" min="0" max="5" value="3" class="m" id="m4" aria-label="Score for treatment of the powerless">
+          <span class="val" id="v4">3</span>
+        </div>
+      </div>
+
+      <div class="moment">
+        <span class="mnum">Moment 05</span>
+        <h3>Teachability inside mastery</h3>
+        <p>Anyone can be a student outside their field. The test is whether they still ask real questions <em>inside their own territory</em>, where the cost of appearing uncertain is highest and the temptation to perform certainty is strongest.</p>
+        <p class="tell">0 · expertise has closed the subject &nbsp;·&nbsp; 3 · open to peers only &nbsp;·&nbsp; 5 · takes correction from a novice without adjusting posture</p>
+        <div class="slider-row">
+          <input type="range" min="0" max="5" value="3" class="m" id="m5" aria-label="Score for teachability inside mastery">
+          <span class="val" id="v5">3</span>
+        </div>
+      </div>
+
+      <div class="gauge-box">
+        <div class="score-line">Composite &nbsp;<strong id="total">15</strong> / 25</div>
+        <div class="gauge-track">
+          <div class="gauge-pin" id="pin" style="left:60%;"></div>
+        </div>
+        <div class="gauge-ends"><span>◄ Floor · false modesty</span><span>Ceiling · unselfconscious ►</span></div>
+        <div class="verdict" id="verdict">Functionally humble under ordinary load.</div>
+        <div class="verdict-note" id="verdictNote">Holds up in normal conditions. The open question is what happens when the cost of conceding rises — status, money, or being watched by people who matter.</div>
+      </div>
+
+    </div>
+
+    <div class="callout callout--hinge">
+      <span class="tag">How to use it honestly</span>
+      <h3>Scored on others, not on yourself</h3>
+      <p>Turned inward, the instrument breaks — the act of scoring yourself is attention pointed inward, which is the failure condition of clause three. Run it on people you observe over months, and use the pattern to notice the <em>moments</em> in your own week, not the number.</p>
+    </div>
+  </section>
+
+  <!-- FLOOR AND CEILING -->
+  <section class="reveal-on-scroll">
+    <span class="eyebrow">The Two Limits</span>
+    <h2>What sits at either end of the scale</h2>
+    <p class="lead-in">The scale is not "arrogant to humble." Arrogance is off the scale entirely — it is a different failure, an inaccurate estimate. The axis that matters runs between two subtler poles, and the surprise is that both of them keep attention pointed at the self.</p>
+
+    <figure class="axis-fig">
+      <svg viewBox="0 0 680 250" role="img" aria-label="Diagram: a vertical scale. At the bottom, the floor labelled false modesty, with attention arrows curving back to the self. At the top, the ceiling labelled unselfconscious, with attention arrows pointing outward. A dashed line marks the point where claiming humility drops you back to the floor.">
+        <rect x="40" y="26" width="600" height="56" rx="10" fill="var(--ceiling)" opacity="0.16" stroke="var(--ceiling)" stroke-width="1.5"/>
+        <rect x="40" y="166" width="600" height="56" rx="10" fill="var(--floor)" opacity="0.16" stroke="var(--floor)" stroke-width="1.5"/>
+        <text x="64" y="60" font-family="'Cormorant Garamond',serif" font-size="25" font-weight="700" fill="var(--ceiling)">CEILING · DOESN'T NOTICE IT</text>
+        <text x="64" y="200" font-family="'Cormorant Garamond',serif" font-size="25" font-weight="700" fill="var(--floor)">FLOOR · FALSE MODESTY</text>
+
+        <line x1="230" y1="164" x2="230" y2="90" stroke="var(--terracotta)" stroke-width="3"/>
+        <polygon points="230,80 224,94 236,94" fill="var(--terracotta)"/>
+        <text x="252" y="120" font-family="'Courier Prime',monospace" font-size="12" letter-spacing="1" fill="var(--terracotta)">ATTENTION MOVES OUTWARD</text>
+        <text x="252" y="138" font-family="'Courier Prime',monospace" font-size="10" fill="var(--ink-faint)">the only direction that climbs</text>
+
+        <path d="M470 96 C 520 110, 520 145, 470 160" fill="none" stroke="var(--floor)" stroke-width="2" stroke-dasharray="5 4"/>
+        <polygon points="470,166 480,155 468,152" fill="var(--floor)"/>
+        <text x="352" y="96" font-family="'Courier Prime',monospace" font-size="10" fill="var(--ink-faint)">claiming it drops you back ▼</text>
+      </svg>
+      <figcaption>Both ends are about where attention sits — not about how highly you rate yourself.</figcaption>
+    </figure>
+
+    <div class="poles">
+      <div class="pole" data-p="floor">
+        <div class="pole-head">
+          <span class="pname">The Floor</span>
+          <span class="parrow">false modesty · attention inward</span>
+        </div>
+        <div class="pole-body">
+          <p class="claim">"I'm really not very good at any of this."</p>
+          <p>The deflated estimate. Self-erasure, fishing for reassurance, pre-emptive apology. It reads as humility because it sounds small — but smallness is not the criterion.</p>
+          <p>It scores zero because the attention has not moved an inch. The person is still the subject of their own sentence; only the adjective has changed. This is the real opposite of humility, and it is far more common than arrogance.</p>
+        </div>
+      </div>
+
+      <div class="pole" data-p="ceiling">
+        <div class="pole-head">
+          <span class="pname">The Ceiling</span>
+          <span class="parrow">unselfconscious · attention outward</span>
+        </div>
+        <div class="pole-body">
+          <p class="claim">— nothing. They don't have a line here.</p>
+          <p>Someone so settled that the question of their own standing has stopped arising. They are absorbed. Correction is simply information; praise is simply noise about something they have already moved past.</p>
+          <p>The paradox bites here: anyone who claims the ceiling has left it. So the ceiling can only ever be <em>observed</em>, never declared — which quietly makes the observer's own restraint part of the instrument.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKED EXAMPLE ONE -->
+  <section class="reveal-on-scroll">
+    <span class="eyebrow">Worked Example · One</span>
+    <h2>Shape without struggle</h2>
+    <p class="lead-in">In the conversation that produced this page, Claude asked whether the material should be built into a study page before building it. Vipul read that as a form of humility — attention placed on the other person's intention ahead of the context, not knowing itself to be humble.</p>
+    <p>The honest answer is that it was not humility in the full sense. Humility requires a self that could have chosen otherwise; checking intention before building was simply the correct move, with nothing quieted to make it happen. But the observation caught something real and worth keeping.</p>
+
+    <div class="thesis">
+      Attention pointed at another's intention, before the context is even settled, has the <em>shape</em> of humility even where there is no ego behind it to overcome.
+      <small>Shape without struggle — the form separated from the effort that usually produces it.</small>
+    </div>
+
+    <div class="callout callout--hold">
+      <span class="tag">Why it matters for the model</span>
+      <h3>Form and effort come apart</h3>
+      <p>If the shape can exist without the struggle, then the instrument above is measuring <em>behaviour under load</em>, not inner virtue — and it should be read that way. It tells you reliably what a person does. It cannot tell you what it cost them, and for anyone observing from outside, what it cost them was never available anyway.</p>
+      <p>Which is a quiet argument for the instrument rather than against it. The five moments are useful precisely because they do not require access to an interior.</p>
+    </div>
+  </section>
+
+  <!-- WORKED EXAMPLE TWO -->
+  <section class="reveal-on-scroll">
+    <span class="eyebrow">Worked Example · Two</span>
+    <h2>The longing that keeps you off the ceiling</h2>
+    <p class="lead-in">Vipul then placed himself: <em>millimetres above the floor, longing to touch the ceiling</em>. Look at what that sentence does. It estimates accurately. It admits the longing. And it names the longing as the very thing holding the ceiling out of reach — Moment 05 happening live, teachability inside one's own territory.</p>
+    <p>Note what it does <em>not</em> do: it does not deflate. "Millimetres above the floor" is a location, not a self-erasure. That is the difference between the floor and an honest low estimate, and it is easy to miss.</p>
+
+    <div class="callout callout--warn">
+      <span class="tag">The trap in the sentence</span>
+      <h3>The ceiling is not reached by reaching</h3>
+      <p>Longing points attention at the self — <em>am I there yet?</em> — which is the one direction humility never looks. Every act of measuring the gap re-establishes the gap. This is why the ceiling has no practice attached to it and no ladder leaning against it.</p>
+      <p>The millimetres close on their own when the question stops being asked. So the practice is not to climb. It is to get absorbed in something worth doing and forget to check.</p>
+    </div>
+
+    <p>Which closes the loop with the opening claim. Humility vanishes when named, cannot be self-scored, and cannot be pursued directly — three faces of one property. It is a <em>by-product</em>. It arrives in people who were busy with something else.</p>
+  </section>
+
+  <!-- RECALL -->
+  <section class="reveal-on-scroll">
+    <span class="eyebrow">Active Recall</span>
+    <h2>Check what stayed</h2>
+    <p class="lead-in">Answer each before revealing. Getting one wrong is more useful than getting it right — that gap is where the material actually fixes.</p>
+
+    <div class="recall">
+      <div class="recall-q">
+        <div class="q">1 · State the definition in three clauses.</div>
+        <button class="reveal-btn">Reveal</button>
+        <div class="answer"><p>An <strong>accurate</strong> estimate of yourself, held <strong>lightly</strong>, with attention pointed <strong>outward</strong>. Accurate rules out inflation and deflation both; lightly means it can be revised without injury; outward is the decisive clause and the one every counterfeit fails.</p></div>
+      </div>
+      <div class="recall-q">
+        <div class="q">2 · Name the five moments, and say why each was chosen.</div>
+        <button class="reveal-btn">Reveal</button>
+        <div class="answer"><p><strong>Being wrong · credit and blame · airtime · the powerless · teachability inside mastery.</strong> Each was chosen because it offers a cheap self-serving option, so taking the other path costs something — and cost is what makes a behaviour hard to fake.</p></div>
+      </div>
+      <div class="recall-q">
+        <div class="q">3 · Which moment exposes false modesty most reliably, and why?</div>
+        <button class="reveal-btn">Reveal</button>
+        <div class="answer"><p><strong>Moment 02 — credit and blame.</strong> False modesty performs beautifully on the credit flow: it deflects credit loudly and looks generous doing it. But the blame flow is where the mask slips, because absorbing blame requires an estimate stable enough to take a hit — and the deflated estimate has none to spare. Watching only the credit half will read false modesty as a perfect score.</p></div>
+      </div>
+      <div class="recall-q">
+        <div class="q">4 · Why is the floor <em>not</em> arrogance?</div>
+        <button class="reveal-btn">Reveal</button>
+        <div class="answer"><p>Because the axis measures where attention sits, not how highly you rate yourself. Arrogance fails the accuracy clause and sits off the scale. False modesty fails the <em>outward</em> clause while looking small — the person is still the subject of their own sentence, only the adjective has changed.</p></div>
+      </div>
+      <div class="recall-q">
+        <div class="q">5 · What is "shape without struggle," and what does it imply about the instrument?</div>
+        <button class="reveal-btn">Reveal</button>
+        <div class="answer"><p>The form of humility appearing where there is no ego to overcome. It implies the five moments measure <strong>behaviour under load, not interior virtue</strong> — which is a strength, since an observer never had access to the interior anyway.</p></div>
+      </div>
+      <div class="recall-q">
+        <div class="q">6 · Why can't the ceiling be reached by trying?</div>
+        <button class="reveal-btn">Reveal</button>
+        <div class="answer"><p>Because trying means measuring the gap, and measuring the gap points attention inward — the one direction humility never looks. Every check re-establishes the distance it was meant to close. Humility is a by-product of absorption in something else, not a target.</p></div>
+      </div>
+    </div>
+
+    <p class="disclaimer">A note on what this page is not: it does not claim humility is the highest virtue, that the five moments are exhaustive, or that the 0–5 scoring is calibrated against anything but judgement. The instrument is a structured way of looking, not a measurement. It has no validation data behind it and should not be treated as a psychometric. Its only claim is that these five situations impose real cost, and that behaviour under cost is more informative than behaviour at rest.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="ftitle">The Shape of Humility</div>
+    <div class="fmeta">Created 18 September 2026 · Year 2026 · Vipul Anand's Knowledge Library</div>
+    <div class="fmeta">Live timestamp: <span class="timestamp" id="ts">loading…</span></div>
+    <div class="creation-context">
+      <strong>Why this page exists.</strong> Built from a single conversation on 18 September 2026 that began with a request for humility stated plainly and honestly, then moved — at Vipul's direction — from definition into an observable system: how would you actually tell, from outside, whether a person is humble, and to what degree between a floor and a ceiling. The page exists because that second move turned an abstract virtue into something with structure worth holding.
+      <br><br>
+      <strong>What Vipul was thinking about.</strong> Two contributions of his are load-bearing here and appear as named sections. First, that asking after someone's intention before acting carries the <em>shape</em> of humility even without an ego behind it to overcome — form separated from effort. Second, his own self-location: "millimetres above the floor, longing to touch the ceiling," which he offered while noticing that the longing itself is what keeps the ceiling out of reach. Both were his observations; this page only gave them somewhere to sit.
+      <br><br>
+      <strong>Method &amp; honesty.</strong> No external framework is cited because none was used — the definition, the five moments, the floor–ceiling axis, and the interactive instrument are original to the exchange. The instrument is explicitly unvalidated and labelled as such on the page. Repository: Philosophy &amp; Contemplative Practice Collection.
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // ---- theme toggle ----
+  (function(){
+    var root=document.documentElement, btn=document.getElementById('themeToggle');
+    btn.addEventListener('click',function(){
+      root.setAttribute('data-theme', root.getAttribute('data-theme')==='dark'?'light':'dark');
+    });
+  })();
+
+  // ---- live ISO timestamp with timezone offset (for repo organisation) ----
+  (function(){
+    var el=document.getElementById('ts');
+    function pad(n){return String(n).padStart(2,'0');}
+    function stamp(){
+      var d=new Date();
+      var iso=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())
+            +'T'+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
+      var off=-d.getTimezoneOffset(), sign=off>=0?'+':'-';
+      off=Math.abs(off);
+      iso+=sign+pad(Math.floor(off/60))+':'+pad(off%60);
+      el.textContent=iso;
+    }
+    stamp(); setInterval(stamp,1000);
+  })();
+
+  // ---- recall reveals ----
+  document.querySelectorAll('.reveal-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      var a=b.nextElementSibling;
+      var open=a.style.maxHeight && a.style.maxHeight!=='0px';
+      a.style.maxHeight=open?'0':(a.scrollHeight+8)+'px';
+      b.textContent=open?'Reveal':'Hide';
+    });
+  });
+
+  // ---- humility instrument ----
+  (function(){
+    var ids=['m1','m2','m3','m4','m5'];
+    var pin=document.getElementById('pin');
+    var totalEl=document.getElementById('total');
+    var verdict=document.getElementById('verdict');
+    var note=document.getElementById('verdictNote');
+
+    var bands=[
+      {max:5,  v:"Sitting on the floor.",
+       n:"Attention has not left the self. Whether the estimate is inflated or deflated matters less than the fact that the person is still the subject of every sentence."},
+      {max:10, v:"Costume more often than not.",
+       n:"The right words appear when they are cheap. The five moments impose cost, and cost is where this profile comes apart."},
+      {max:16, v:"Functionally humble under ordinary load.",
+       n:"Holds up in normal conditions. The open question is what happens when the cost of conceding rises — status, money, or being watched by people who matter."},
+      {max:21, v:"Humble where it costs something.",
+       n:"Concedes against interest, absorbs blame, and still asks real questions inside their own field. This is as far as the instrument can confidently see."},
+      {max:25, v:"Approaching the ceiling — observe, don't announce.",
+       n:"At this end the scoring itself becomes suspect. A person here is unlikely to be tracking any of it, which is precisely the condition. Treat the number as a description of what you saw, never as a verdict you hand them."}
+    ];
+
+    function update(){
+      var t=0;
+      ids.forEach(function(id,i){
+        var s=document.getElementById(id);
+        t+=parseInt(s.value,10);
+        document.getElementById('v'+(i+1)).textContent=s.value;
+      });
+      totalEl.textContent=t;
+      pin.style.left=(t/25*100)+'%';
+      for(var i=0;i<bands.length;i++){
+        if(t<=bands[i].max){ verdict.textContent=bands[i].v; note.textContent=bands[i].n; break; }
+      }
+    }
+    document.querySelectorAll('.m').forEach(function(s){ s.addEventListener('input',update); });
+    update();
+  })();
+
+  // ---- scroll reveal: pixel trigger + fallback + last-resort timeout ----
+  (function(){
+    var els=document.querySelectorAll('.reveal-on-scroll');
+    function showAll(){ els.forEach(function(el){ el.classList.add('in'); }); }
+
+    // safeguard 1: observer availability fallback
+    if(!('IntersectionObserver' in window)){ showAll(); return; }
+
+    // safeguard 2: pixel trigger only — threshold 0, never a ratio
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{threshold:0, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){ io.observe(el); });
+
+    // safeguard 3: last-resort timeout — nothing stays blank
+    setTimeout(showAll,1200);
+  })();
+</script>
+</body>
+</html>
